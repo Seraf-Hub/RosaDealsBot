@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RosaDeals Dashboard</title>
+</head>
+<body>
+
+<h1>🔥 Dashboard attiva</h1>
+
+{% for offer in offers %}
+    <div style="border:1px solid #ccc; margin:10px; padding:10px;">
+        <p>{{ offer[1] }}</p>
+
+        <form method="POST" action="/publish">
+            <input type="hidden" name="id" value="{{ offer[0] }}">
+            <button type="submit">Pubblica</button>
+        </form>
+
+        <form method="POST" action="/discard">
+            <input type="hidden" name="id" value="{{ offer[0] }}">
+            <button type="submit">Scarta</button>
+        </form>
+    </div>
+{% endfor %}
+
+</body>
+</html>
