@@ -435,3 +435,19 @@ client.start()
 print("Sistema attivo 🚀")
 
 client.run_until_disconnected()
+
+from flask import Flask
+from threading import Thread
+import os
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "RosaDeals attivo"
+
+def run_web():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
+
+Thread(target=run_web).start()
